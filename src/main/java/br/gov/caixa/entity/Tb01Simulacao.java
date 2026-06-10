@@ -1,6 +1,5 @@
-package br.gov.caixa.entities;
+package br.gov.caixa.entity;
 
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 

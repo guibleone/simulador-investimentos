@@ -1,4 +1,4 @@
-package br.gov.caixa.entities;
+package br.gov.caixa.entity;
 
 import jakarta.persistence.*;
 
@@ -12,13 +12,13 @@ public class Tb02PKSimulacaoParcela implements Serializable {
     @JoinColumn(name ="co_simulacao" )
     private Tb01Simulacao simulacao;
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer nu_mes;
+    private Integer nuMes;
 
     public Tb02PKSimulacaoParcela(){}
 
-    public Tb02PKSimulacaoParcela(Tb01Simulacao simulacao, Integer nu_mes) {
+    public Tb02PKSimulacaoParcela(Tb01Simulacao simulacao, Integer nuMes) {
         this.simulacao = simulacao;
-        this.nu_mes = nu_mes;
+        this.nuMes = nuMes;
     }
 
     public Tb01Simulacao getSimulacao() {
@@ -29,23 +29,23 @@ public class Tb02PKSimulacaoParcela implements Serializable {
         this.simulacao = simulacao;
     }
 
-    public Integer getNu_mes() {
-        return nu_mes;
+    public Integer getNuMes() {
+        return nuMes;
     }
 
-    public void setNu_mes(Integer nu_mes) {
-        this.nu_mes = nu_mes;
+    public void setNuMes(Integer nuMes) {
+        this.nuMes = nuMes;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Tb02PKSimulacaoParcela that = (Tb02PKSimulacaoParcela) o;
-        return Objects.equals(simulacao, that.simulacao) && Objects.equals(nu_mes, that.nu_mes);
+        return Objects.equals(simulacao, that.simulacao) && Objects.equals(nuMes, that.nuMes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(simulacao, nu_mes);
+        return Objects.hash(simulacao, nuMes);
     }
 }
