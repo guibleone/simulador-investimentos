@@ -1,12 +1,10 @@
 package br.gov.caixa.resource;
 
+import br.gov.caixa.dto.request.DadosSimulacaoRequest;
 import br.gov.caixa.dto.response.SimulacaoResponse;
 import br.gov.caixa.service.SimulacaoService;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
@@ -28,5 +26,11 @@ public class SimulacaoResource {
     public Response listarTodas(){
         List<SimulacaoResponse> simulacoes = simulacaoService.listarTodos();
         return Response.ok().entity(simulacoes).build();
+    }
+
+    @POST
+    @Path("/investimento")
+    public Response realizarSimulacao(DadosSimulacaoRequest dadosSimulacao){
+        return Response.ok().build();
     }
 }

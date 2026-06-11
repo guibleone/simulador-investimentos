@@ -1,0 +1,58 @@
+---
+openapi: 3.1.0
+components:
+  schemas:
+    DadosSimulacaoRequest:
+      type: object
+      required:
+      - valorInicial
+      - taxaJurosMensal
+      - prazoMeses
+      properties:
+        valorInicial:
+          type: number
+        taxaJurosMensal:
+          type: integer
+          format: int64
+        prazoMeses:
+          type: integer
+          format: int32
+paths:
+  /api/simulacoes:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+      summary: Listar Todas
+      tags:
+      - Simulacao Resource
+  /api/simulacoes/investimento:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DadosSimulacaoRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "400":
+          description: Bad Request
+      summary: Realizar Simulacao
+      tags:
+      - Simulacao Resource
+info:
+  title: simulador-investimentos API
+  version: 1.0.0-SNAPSHOT
+servers:
+- url: http://localhost:8080
+  description: Auto generated value
+- url: http://0.0.0.0:8080
+  description: Auto generated value
