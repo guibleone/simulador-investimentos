@@ -3,27 +3,54 @@
   "components" : {
     "schemas" : {
       "DadosSimulacaoRequest" : {
+        "description" : "Dados necessários para realizar uma simulação de financiamento",
         "type" : "object",
         "required" : [ "valorInicial", "taxaJurosMensal", "prazoMeses" ],
         "properties" : {
           "valorInicial" : {
-            "type" : "number"
+            "type" : "number",
+            "description" : "Valor inicial do financiamento",
+            "examples" : [ 150000.00 ],
+            "minimum" : 1
           },
           "taxaJurosMensal" : {
-            "type" : "integer",
-            "format" : "int64"
+            "type" : "number",
+            "description" : "Taxa de juros mensal em percentual",
+            "examples" : [ 1.5 ]
           },
           "prazoMeses" : {
             "type" : "integer",
-            "format" : "int32"
+            "format" : "int32",
+            "description" : "Prazo da simulação em meses",
+            "examples" : [ 360 ],
+            "minimum" : 1
           }
         }
       }
     }
   },
+  "info" : {
+    "contact" : {
+      "email" : "simulador@gmail.com",
+      "name" : "Suporte API",
+      "url" : "https://www.caixa.gov.br/"
+    },
+    "description" : "API para realizar simulações de financiamento imobiliário.",
+    "license" : {
+      "name" : "Licença MIT",
+      "url" : "https://opensource.org/licenses/MIT"
+    },
+    "title" : "API de Simulação de Financiamento",
+    "version" : "1.0.0"
+  },
+  "tags" : [ {
+    "name" : "Simulação",
+    "description" : "Operações de simulações."
+  } ],
   "paths" : {
     "/api/simulacoes" : {
       "get" : {
+        "tags" : [ "Simulação" ],
         "responses" : {
           "200" : {
             "description" : "OK",
@@ -34,12 +61,12 @@
             }
           }
         },
-        "summary" : "Listar Todas",
-        "tags" : [ "Simulacao Resource" ]
+        "summary" : "Listar Todas"
       }
     },
     "/api/simulacoes/investimento" : {
       "post" : {
+        "tags" : [ "Simulação" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -63,14 +90,33 @@
             "description" : "Bad Request"
           }
         },
-        "summary" : "Realizar Simulacao",
-        "tags" : [ "Simulacao Resource" ]
+        "summary" : "Realizar Simulacao"
+      }
+    },
+    "/api/simulacoes/{coSimulacao}" : {
+      "get" : {
+        "tags" : [ "Simulação" ],
+        "parameters" : [ {
+          "name" : "coSimulacao",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : { }
+              }
+            }
+          }
+        },
+        "summary" : "Detalhar Simulacao"
       }
     }
-  },
-  "info" : {
-    "title" : "simulador-investimentos API",
-    "version" : "1.0.0-SNAPSHOT"
   },
   "servers" : [ {
     "url" : "http://localhost:8080",

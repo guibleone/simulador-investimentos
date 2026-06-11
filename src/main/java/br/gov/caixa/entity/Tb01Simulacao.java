@@ -4,6 +4,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "tb01_simulacao")
@@ -27,4 +28,7 @@ public class Tb01Simulacao extends PanacheEntityBase {
 
     @Column(name = "valor_total_juros")
     public BigDecimal valorTotalJuros;
+
+    @OneToMany(mappedBy = "pkSimulacaoParcela.simulacao", cascade = CascadeType.ALL, orphanRemoval = true)
+    public List<Tb02SimulacaoParcela> parcelas;
 }

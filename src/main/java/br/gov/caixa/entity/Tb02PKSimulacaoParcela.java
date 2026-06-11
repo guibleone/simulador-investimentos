@@ -11,7 +11,6 @@ public class Tb02PKSimulacaoParcela implements Serializable {
     @ManyToOne
     @JoinColumn(name ="co_simulacao" )
     private Tb01Simulacao simulacao;
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer nuMes;
 
     public Tb02PKSimulacaoParcela(){}
