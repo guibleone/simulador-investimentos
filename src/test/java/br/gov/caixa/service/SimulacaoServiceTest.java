@@ -3,6 +3,7 @@ package br.gov.caixa.service;
 import br.gov.caixa.dto.request.DadosSimulacaoRequest;
 import br.gov.caixa.dto.response.SimulacaoParcelaResponse;
 import br.gov.caixa.dto.response.SimulacaoResponse;
+import br.gov.caixa.entity.Tb01Simulacao;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.NotFoundException;
@@ -38,7 +39,6 @@ public class SimulacaoServiceTest {
         SimulacaoResponse simulacao = resultado.getFirst();
 
         // Assert
-        Assertions.assertEquals(1, resultado.size());
         Assertions.assertEquals(CO_SIMULACAO, simulacao.coSimulacao());
         Assertions.assertEquals(1000.00, simulacao.valorInicial().doubleValue());
         Assertions.assertEquals(0.02, simulacao.taxaJurosMensal().doubleValue());

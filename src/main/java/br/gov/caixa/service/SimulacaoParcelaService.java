@@ -31,9 +31,9 @@ public class SimulacaoParcelaService {
         BigDecimal saldoInicial = simulacao.valorInicial;
 
         for (int i = 1; i <= simulacao.prazoMeses; i++) {
-            Log.info("Gerarndo parcela do MÊS " + i);
-            BigDecimal jurosIncidentes = saldoInicial.multiply(simulacao.taxaJurosMensal).divide(BigDecimal.valueOf(100), MathContext.DECIMAL128).setScale(2, RoundingMode.HALF_UP);;
-            BigDecimal saldoFinal = saldoInicial.add(jurosIncidentes).setScale(2, RoundingMode.HALF_UP);;
+            Log.info("Gerando parcela do MÊS " + i);
+            BigDecimal jurosIncidentes = saldoInicial.multiply(simulacao.taxaJurosMensal).divide(BigDecimal.valueOf(100), MathContext.DECIMAL128).setScale(2, RoundingMode.HALF_UP);
+            BigDecimal saldoFinal = saldoInicial.add(jurosIncidentes).setScale(2, RoundingMode.HALF_UP);
 
             Tb02SimulacaoParcela parcela = new Tb02SimulacaoParcela();
             parcela.pkSimulacaoParcela = new Tb02PKSimulacaoParcela(simulacao, i);
