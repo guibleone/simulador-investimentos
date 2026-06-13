@@ -28,6 +28,80 @@ components:
           examples:
           - 360
           minimum: 1
+    ResultadoSimulacaoResponse:
+      description: "Resultado completo da simulação de empréstimo, incluindo detalhes\
+        \ da simulação e das parcelas"
+      type: object
+      properties:
+        simulacao:
+          description: Detalhes da simulação de empréstimo
+          type: object
+          $ref: "#/components/schemas/SimulacaoResponse"
+        parcelas:
+          type: array
+          items:
+            $ref: "#/components/schemas/SimulacaoParcelaResponse"
+          description: Lista de parcelas detalhadas da simulação
+    SimulacaoParcelaResponse:
+      type: object
+      description: Detalhes de cada parcela da simulação de empréstimo
+      properties:
+        nuMes:
+          type: integer
+          format: int32
+          description: Número da parcela e mês
+          examples:
+          - 1
+        saldoInicial:
+          type: number
+          description: Saldo devedor no início do mês
+          examples:
+          - 10000.00
+        jurosIncidentes:
+          type: number
+          description: Valor dos juros incidentes na parcela
+          examples:
+          - 150.00
+        saldoFinal:
+          type: number
+          description: Saldo devedor no final do mês após o pagamento da parcela
+          examples:
+          - 9850.00
+    SimulacaoResponse:
+      type: object
+      description: Resposta da simulação de empréstimo
+      properties:
+        coSimulacao:
+          type: string
+          description: Código da simulação
+          examples:
+          - 123e4567-e89b-12d3-a456-426614174000
+        valorInicial:
+          type: number
+          description: Valor inicial do empréstimo
+          examples:
+          - 10000.00
+        taxaJurosMensal:
+          type: number
+          description: Taxa de juros mensal em porcentagem
+          examples:
+          - 1.5
+        prazoMeses:
+          type: integer
+          format: int32
+          description: Prazo em meses para pagamento
+          examples:
+          - 36
+        valorTotalFinal:
+          type: number
+          description: Valor total a ser pago ao final do prazo
+          examples:
+          - 11500.00
+        valorTotalJuros:
+          type: number
+          description: Valor total de juros a ser pago ao final do prazo
+          examples:
+          - 1500.00
 info:
   contact:
     email: simulador@gmail.com
@@ -45,17 +119,26 @@ tags:
 paths:
   /api/simulacoes:
     get:
+      summary: Listar todas as simulações
+      description: Retorna uma lista de todas as simulações cadastradas.
       tags:
       - Simulação
       responses:
         "200":
-          description: OK
+          description: Lista de simulações
           content:
             application/json:
-              schema: {}
-      summary: Listar Todas
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SimulacaoResponse"
+        "500":
+          description: Erro interno
   /api/simulacoes/investimento:
     post:
+      summary: Realizar simulação de investimento
+      description: Realiza uma simulação de investimento com base nos dados fornecidos
+        e retorna os resultados.
       tags:
       - Simulação
       requestBody:
@@ -65,16 +148,21 @@ paths:
               $ref: "#/components/schemas/DadosSimulacaoRequest"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Simulação realizada com sucesso
           content:
             application/json:
-              schema: {}
+              schema:
+                $ref: "#/components/schemas/ResultadoSimulacaoResponse"
         "400":
-          description: Bad Request
-      summary: Realizar Simulacao
+          description: Dados de simulação inválidos
+        "500":
+          description: Erro interno
   /api/simulacoes/{coSimulacao}:
     get:
+      summary: Detalhar simulação
+      description: "Retorna os detalhes de uma simulação específica, incluindo as\
+        \ parcelas."
       tags:
       - Simulação
       parameters:
@@ -85,11 +173,15 @@ paths:
           type: string
       responses:
         "200":
-          description: OK
+          description: Detalhes da simulação
           content:
             application/json:
-              schema: {}
-      summary: Detalhar Simulacao
+              schema:
+                $ref: "#/components/schemas/ResultadoSimulacaoResponse"
+        "404":
+          description: Simulação não encontrada
+        "500":
+          description: Erro interno
 servers:
 - url: http://localhost:8080
   description: Auto generated value
