@@ -12,6 +12,7 @@ public class Tb01Simulacao extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "co_simulacao", nullable = false, updatable = false)
     public String coSimulacao;
 
     @Column(name = "valor_inicial", nullable = false)

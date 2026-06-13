@@ -1,0 +1,4 @@
+INSERT INTO tb01_simulacao (co_simulacao, valor_inicial, taxa_juros_mensal, prazo_meses, valor_total_final, valor_total_juros) VALUES ('a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d', 1000.00, 0.02, 3, 1061.21, 61.21);
+INSERT INTO tb02_simulacao_parcela (co_simulacao, nu_mes, saldo_inicial, juros_incidentes, saldo_final) VALUES ('a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d', 1, 1000.00, 20.00, 1020.00);
+INSERT INTO tb02_simulacao_parcela (co_simulacao, nu_mes, saldo_inicial, juros_incidentes, saldo_final) VALUES ('a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d', 2, 1020.00, 20.40, 1040.40);
+INSERT INTO tb02_simulacao_parcela (co_simulacao, nu_mes, saldo_inicial, juros_incidentes, saldo_final) VALUES ('a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d', 3, 1040.40, 20.81, 1061.21);

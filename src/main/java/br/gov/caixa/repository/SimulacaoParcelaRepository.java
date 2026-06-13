@@ -1,4 +1,4 @@
-package br.gov.caixa.respository;
+package br.gov.caixa.repository;
 
 import br.gov.caixa.entity.Tb02PKSimulacaoParcela;
 import br.gov.caixa.entity.Tb02SimulacaoParcela;

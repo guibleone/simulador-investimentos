@@ -3,7 +3,7 @@ package br.gov.caixa.service;
 import br.gov.caixa.entity.Tb01Simulacao;
 import br.gov.caixa.entity.Tb02PKSimulacaoParcela;
 import br.gov.caixa.entity.Tb02SimulacaoParcela;
-import br.gov.caixa.respository.SimulacaoParcelaRepository;
+import br.gov.caixa.repository.SimulacaoParcelaRepository;
 import io.quarkus.logging.Log;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -46,7 +46,6 @@ public class SimulacaoParcelaService {
         }
 
         salvarParcelas(parcelas);
-
         return parcelas;
     }
 

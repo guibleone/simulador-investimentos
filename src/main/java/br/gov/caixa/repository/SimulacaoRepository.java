@@ -1,4 +1,4 @@
-package br.gov.caixa.respository;
+package br.gov.caixa.repository;
 
 import br.gov.caixa.entity.Tb01Simulacao;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;

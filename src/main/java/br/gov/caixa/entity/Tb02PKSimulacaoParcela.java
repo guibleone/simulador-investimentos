@@ -11,6 +11,7 @@ public class Tb02PKSimulacaoParcela implements Serializable {
     @ManyToOne
     @JoinColumn(name ="co_simulacao" )
     private Tb01Simulacao simulacao;
+    @Column(name = "nu_mes", nullable = false)
     private Integer nuMes;
 
     public Tb02PKSimulacaoParcela(){}

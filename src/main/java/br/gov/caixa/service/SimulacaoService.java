@@ -7,7 +7,7 @@ import br.gov.caixa.entity.Tb01Simulacao;
 import br.gov.caixa.entity.Tb02SimulacaoParcela;
 import br.gov.caixa.mapper.SimulacaoMapper;
 import br.gov.caixa.mapper.SimulacaoParcelaMapper;
-import br.gov.caixa.respository.SimulacaoRepository;
+import br.gov.caixa.repository.SimulacaoRepository;
 import io.quarkus.logging.Log;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
