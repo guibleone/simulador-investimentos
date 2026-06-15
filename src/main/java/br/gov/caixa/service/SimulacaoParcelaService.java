@@ -31,7 +31,6 @@ public class SimulacaoParcelaService {
         BigDecimal saldoInicial = simulacao.valorInicial;
 
         for (int i = 1; i <= simulacao.prazoMeses; i++) {
-            Log.info("Gerando parcela do MÊS " + i);
             BigDecimal jurosIncidentes = saldoInicial.multiply(simulacao.taxaJurosMensal).divide(BigDecimal.valueOf(100), MathContext.DECIMAL128).setScale(2, RoundingMode.HALF_UP);
             BigDecimal saldoFinal = saldoInicial.add(jurosIncidentes).setScale(2, RoundingMode.HALF_UP);
 
@@ -46,6 +45,8 @@ public class SimulacaoParcelaService {
         }
 
         salvarParcelas(parcelas);
+
+        Log.info("Parcelas salvas com sucesso: " + simulacao.coSimulacao);
         return parcelas;
     }
 

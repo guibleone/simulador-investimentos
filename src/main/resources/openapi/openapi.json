@@ -23,6 +23,7 @@
             "format" : "int32",
             "description" : "Prazo da simulação em meses",
             "examples" : [ 360 ],
+            "maximum" : 144,
             "minimum" : 1
           }
         }
